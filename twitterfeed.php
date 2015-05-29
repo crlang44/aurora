@@ -44,36 +44,43 @@ $json_string = $twitter->setGetfield($getfield)
              ->performRequest();
 
 //convert json string to array
-$json_output = json_decode($json_string);
+$json_output = json_decode($json_string, true);
 
 //navigate down to statuses object
-$statuses = $json_output->statuses;
-
-
-
-print"<pre>";
-print_r($statuses);
-print "</pre>";
-//print $statuses;
-foreach ( $statuses as $n )
-{
-
-		// print "<pre>";
-		// print_r($n);
-		// print "</pre";
-
-	//object to array conversion
-	// $t = array($n);
-
-
-	// //loop through each tweet
-	// foreach($t as $tweet){
-	// 	print "<pre>";
-	// 	echo $t->name;
-	// 	print "</pre";
-	//     //echo "{$t->name}\n";
-	// }
+//$statuses = $json_output->statuses;
+$count = 0;
+foreach($json_output[statuses] as $tweets){
+	$count++;
+	print $count."  ";
+	print $tweets[text].",<br><br>";
 }
+
+// print $json_output[statuses][0][id];
+// print"<pre>";
+// print_r($json_output);
+// print "</pre>";
+
+
+// foreach ( $statuses as $n )
+// {
+
+// 		print "<pre>";
+// 		print_r($n);
+// 		print "</pre";
+
+// 	//object to array conversion
+// 	// $t = array($n);
+
+
+// 	// //loop through each tweet
+// 	// foreach($t as $tweet){
+// 	// 	print "<pre>";
+// 	// 	echo $t->name;
+// 	// 	print "</pre";
+// 	//     //echo "{$t->name}\n";
+// 	// }
+	
+// }
 
 function get_string_between($string, $start, $end){
     $string = " ".$string;
