@@ -1626,7 +1626,7 @@
 	}
 
 		a:hover {
-			color: #ef8376;
+			color: rgba(000,255,0,0.3);
 			border-bottom-color: transparent;
 		}
 
@@ -1857,7 +1857,7 @@
 			}
 
 				ul.icons li a:hover {
-					color: #ef8376;
+					color: rgba(000,255,255,0.3);
 				}
 
 	ol.default {
@@ -1903,7 +1903,7 @@
 		form select:focus,
 		form textarea:focus {
 			background: #fff;
-			border-color: #df7366;
+			border-color: rgba(192,192,192,0);
 		}
 
 	form input[type="text"],
@@ -1990,7 +1990,7 @@
 	.button {
 		position: relative;
 		display: inline-block;
-		background: #df7366;
+		background: rgba(192,192,192,0.3);
 		color: #fff;
 		text-align: center;
 		border-radius: 0.5em;
@@ -2012,7 +2012,7 @@
 		button:hover,
 		.button:hover {
 			color: #fff;
-			background: #ef8376;
+			background: rgba(000,255,0,0.3);
 		}
 
 		input[type="button"].alt,
@@ -2273,7 +2273,7 @@
 				}
 
 	.dropotron {
-		background: rgba(255, 255, 255, 0.975);
+		background: rgba(000, 255, 255, 0.975);
 		padding: 1em 1.25em 1em 1.25em;
 		line-height: 1em;
 		height: auto;
@@ -2294,7 +2294,7 @@
 			}
 
 			.dropotron li:hover {
-				color: #ef8376;
+				color: rgba(000,255,0,0.3);
 			}
 
 			.dropotron li a, .dropotron li span {
@@ -2318,7 +2318,7 @@
 				left: 50%;
 				top: -0.7em;
 				margin-left: -0.75em;
-				border-bottom: solid 0.75em rgba(255, 255, 255, 0.975);
+				border-bottom: solid 0.75em rgba(000, 255, 255, 0.975);
 				border-left: solid 0.75em rgba(64, 64, 64, 0);
 				border-right: solid 0.75em rgba(64, 64, 64, 0);
 			}
@@ -2378,6 +2378,7 @@
 		position: relative;
 		overflow: hidden;
 		padding: 6em 0 6em 0;
+		margin: 1em 0 0 0;
 		background: #2b252c;
 		color: #fff;
 	}
@@ -2444,7 +2445,7 @@
 				width: 6em;
 				height: 6em;
 				border-radius: 100%;
-				background-color: rgba(72, 57, 73, 0.5);
+				background-color: rgba(00, 00, 128, 0.5);
 				position: absolute;
 				top: 50%;
 				margin-top: -3em;
@@ -2467,7 +2468,7 @@
 			}
 
 			.carousel .forward:hover:before, .carousel .backward:hover:before {
-				background-color: rgba(239, 131, 118, 0.75);
+				background-color: rgba(000, 255, 000, 0.3);
 			}
 
 		.carousel .forward {
@@ -2819,7 +2820,7 @@
 						-moz-osx-font-smoothing: grayscale;
 						content: '\f0c9';
 						color: #fff;
-						color: rgba(255, 255, 255, 0.75);
+						color: rgba(000, 255, 255, 0.75);
 						text-align: center;
 						display: block;
 						font-size: 14px;
@@ -2880,7 +2881,7 @@
 					padding: 0.5em;
 					color: #ddd;
 					border: 0;
-					border-top: dotted 1px rgba(255, 255, 255, 0.05);
+					border-top: dotted 1px rgba(000, 255, 255, 0.05);
 				}
 
 					#navPanel .link:first-child {
@@ -2997,7 +2998,7 @@
 		/* Banner */
 
 			#banner {
-				padding: 3em 2em 3em 2em;
+				padding: 1em 2em 1em 2em;
 			}
 
 		/* Sidebar */
@@ -3040,3 +3041,18 @@
 					}
 
 	}
+
+.container {
+	image-rendering: auto;
+	text-align: center;
+    width: 200px;
+    height: 180px;
+}
+
+/* resize images */
+.container img {
+	image-rendering: auto;
+	text-align: center;
+    width: auto;
+    height: 100%;
+}
