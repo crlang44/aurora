@@ -36,8 +36,51 @@ $url = 'https://api.twitter.com/1.1/search/tweets.json';
 $getfield = '?max_id=604354574137184256&q=goog&include_entities=1';
 $requestMethod = 'GET';
 $twitter = new TwitterAPIExchange($settings);
-echo $twitter->setGetfield($getfield)
+
+
+//save twitter output as string
+$json_string = $twitter->setGetfield($getfield)
              ->buildOauth($url, $requestMethod)
              ->performRequest();
 
+//convert json string to array
+$json_output = json_decode($json_string);
+
+//navigate down to statuses object
+$statuses = $json_output->statuses;
+
+
+
+print"<pre>";
+print_r($statuses);
+print "</pre>";
+//print $statuses;
+foreach ( $statuses as $n )
+{
+
+		// print "<pre>";
+		// print_r($n);
+		// print "</pre";
+
+	//object to array conversion
+	// $t = array($n);
+
+
+	// //loop through each tweet
+	// foreach($t as $tweet){
+	// 	print "<pre>";
+	// 	echo $t->name;
+	// 	print "</pre";
+	//     //echo "{$t->name}\n";
+	// }
+}
+
+function get_string_between($string, $start, $end){
+    $string = " ".$string;
+    $ini = strpos($string,$start);
+    if ($ini == 0) return "";
+    $ini += strlen($start);
+    $len = strpos($string,$end,$ini) - $ini;
+    return substr($string,$ini,$len);
+}
  ?>
