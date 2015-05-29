@@ -48,10 +48,9 @@ $json_output = json_decode($json_string, true);
 
 //navigate down to statuses object
 //$statuses = $json_output->statuses;
-$count = 0;
+
 foreach($json_output[statuses] as $tweets){
-	$count++;
-	print $count."  ";
+	
 	print $tweets[text].",<br><br>";
 }
 
