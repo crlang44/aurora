@@ -48,7 +48,7 @@ function Gauge(placeholderName, configuration)
 					.attr("cx", this.config.cx)
 					.attr("cy", this.config.cy)
 					.attr("r", 0.9 * this.config.raduis)
-					.style("fill", "#fff")
+					.style("fill", "#eef")
 					.style("stroke", "#e0e0e0")
 					.style("stroke-width", "2px");
 					
@@ -165,7 +165,7 @@ function Gauge(placeholderName, configuration)
 									.attr("dy", fontSize / 2)
 									.attr("text-anchor", "middle")
 									.style("font-size", fontSize + "px")
-									.style("fill", "#000")
+									.style("fill", "#fff")
 									.style("stroke-width", "0px");
 		
 		this.redraw(this.config.min, 0);
