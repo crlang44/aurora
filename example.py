@@ -66,19 +66,7 @@ def main():
 
     avg = sumVar/len(tweets)
 
-    print avg
-
-    # Here we have tweets which we have already tokenized (turned into an array of words)
-    #tweet1 = ['I', 'love', 'holidays']
-    #tweet2 = ['very', 'sad']
-    #tweet3 = ['Nidhal', 'likes', 'the', 'giants', 'but', 'hates', 'the', 'a\'s']
-    #tweet4 = ['like', 'like', 'like']
-
-    # Calculate the probabilities that the tweets are happy or sad
-    #tweet1_happy_prob, tweet1_sad_prob = classifySentiment(tweet1, happy_log_probs, sad_log_probs)
-    #tweet2_happy_prob, tweet2_sad_prob = classifySentiment(tweet2, happy_log_probs, sad_log_probs)
-    #tweet3_happy_prob, tweet3_sad_prob = classifySentiment(tweet3, happy_log_probs, sad_log_probs)
-    #tweet4_happy_prob, tweet4_sad_prob = classifySentiment(tweet4, happy_log_probs, sad_log_probs)
+    print json.dumps(avg)
 
 #if __name__ == '__main__':
 main()
