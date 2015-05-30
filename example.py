@@ -65,7 +65,7 @@ def main():
     totalFollowers = 0
     inputString = sys.argv[1]
 
-    tweets, numFollowers = readTweets(inputString)
+    tweets, numFollowers = readTweets(inputString[:-1])
 
     numTweets = len(tweets)
 

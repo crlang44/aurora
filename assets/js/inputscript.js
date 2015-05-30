@@ -29,26 +29,29 @@
 
 			}
 			
-			function updateGauges(opi)
+			function updateGauges(rating)
 			{
 				for (var key in gauges)
 				{
-					var value = getValue(gauges[key],opi)
+					var value = getValue(gauges[key], rating);
 					gauges[key].redraw(value);
 				}
+
 			}
 			
-			function getValue(gauge,opinion)
+			function getValue(gauge, rating)
 			{
 				//opinion = 0.76;
 				var overflow = 0; //10;
-				return gauge.config.min - overflow + (gauge.config.max - gauge.config.min + overflow*2) *  opinion;
+				return gauge.config.min - overflow + (gauge.config.max - gauge.config.min + overflow*2) *  rating;
+
 			}
 			
-			function initialize(op)
+			function initialize()
 			{
 				createGauges();
-				setInterval(updateGauges(op), 2000);
+				setInterval(updateGauges(rating), 1000);
+
 			}
 
 
