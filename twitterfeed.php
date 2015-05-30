@@ -1,4 +1,25 @@
 <?
+// $consumer_key = "byhraYuq3s1ZDravJVy018YRx";
+// $consumer_secret = "0Ulbk6sE2Jbh3FYgAycmLbOKjed37t8Pz5yrAJ0sKdj3l1tljH";
+// require "vendor/autoload.php";
+
+// use Abraham\TwitterOAuth\TwitterOAuth;
+
+// $connection = new TwitterOAuth($consumer_key, $consumer_secret, $access_token, $access_token_secret);
+// $content = $connection->get("account/verify_credentials");
+
+// //$url = "GET https://api.twitter.com/1.1/statuses/home_timeline.json?count=25&exclude_replies=true";
+
+
+// $statues = $connection->get("statuses/home_timeline", array("count" => 25, "exclude_replies" => true));
+// $access_token = $connection->oauth("oauth/access_token", array("oauth_verifier" => "nMznkpFRTMCuNMsmALzel9FgPlmWQDWg"));
+// $url = $connection->url("oauth/authorize", array("oauth_token" => "EaQLH34YD8pgKkUiSp8RbjjOgNxIYVh7"));
+// //GET https://api.twitter.com/1.1/search/tweets.json?q=twitterapi
+// $gUrl = "https://api.twitter.com/1.1/search/tweets.json?q=twitterapi";
+// //http_get ( string $gUrl, array("timeout"=>1), );
+// $statuses = $connection->get("search/tweets", array("q" => "twitterapi"));
+
+// print_r($statuses);
 
 require_once('TwitterAPIExchange.php');
 
@@ -15,30 +36,8 @@ $url = 'https://api.twitter.com/1.1/search/tweets.json';
 $getfield = '?max_id=604354574137184256&q=goog&include_entities=1';
 $requestMethod = 'GET';
 $twitter = new TwitterAPIExchange($settings);
-
-
-//save twitter output as string
-$json_string = $twitter->setGetfield($getfield)
+echo $twitter->setGetfield($getfield)
              ->buildOauth($url, $requestMethod)
              ->performRequest();
-
-//convert json string to array
-$json_output = json_decode($json_string, true);
-
-
-
-
-foreach($json_output[statuses] as $tweets){
-	
-	$text = $tweets[text];
-	if(!preg_match('/[^\x20-\x7F]/', text))
-	print $text;
-		//print $tweets[text]."\n";
-}
-
-// print $json_output[statuses][0][id];
-// print"<pre>";
-// print_r($json_output);
-// print "</pre>";
 
  ?>
