@@ -1,5 +1,6 @@
 import numpy as np
 import json
+import sys
 
 def readSentimentList(file_name):
     ifile = open(file_name, 'r')
@@ -14,19 +15,29 @@ def readSentimentList(file_name):
 
     return happy_log_probs, sad_log_probs
 
-def readTweets(file_name):
-    ifile = open(file_name, 'r')
-    tweets = {}
-    ifile.readline() #Ignore title row
-    i = 0
+def readTweets(inputString):
+    lines = []
 
-    for line in ifile:
-        tweets[i] = line[:-1]
+    lines = inputString.split('\n')
+
+    tweets = {}
+    
+    nums = []
+
+
+    i = 0
+    for line in lines:
+
+        line_split = line.split(',')
+        tweets[i] = line_split[0]
+        nums.append(int(line_split[1]))
+        #tweets[i] = line[:-1]
+
         i = i + 1
 
     #put the text from the tweet into tweets array and ignore endline character
 
-    return tweets
+    return tweets, nums
 
 
 
@@ -49,24 +60,33 @@ def main():
     # We load in the list of words and their log probabilities
     happy_log_probs, sad_log_probs = readSentimentList('twitter_sentiment_list.csv')
     split_tweets = []
-    sumVar = 0;
+    sumVar = 0
+    weightedSum = 0
+    totalFollowers = 0
+    inputString = sys.argv[1]
 
-    tweets = readTweets('tweets.csv')
+    tweets, numFollowers = readTweets(inputString)
+
+    numTweets = len(tweets)
 
     #split each tweet into individual words
-    for i in range(len(tweets)):
+    for i in range(numTweets):
         split_tweet = tweets[i][:-1].split()
         split_tweets.append(split_tweet)
+        # sum the total number of followers
+        totalFollowers += numFollowers[i]
 
-    for i in range(len(tweets)):
-
+    for i in range(numTweets):
         happy_prob, sad_prob = classifySentiment(split_tweets[i], happy_log_probs, sad_log_probs)
         #print 'The probability that this tweet is happy is ', happy_prob, 'and the probability that the tweet is sad is', sad_prob, '\n\n'
         sumVar += happy_prob
+        weightedSum += happy_prob * numFollowers[i]
 
-    avg = sumVar/len(tweets)
-
-    print json.dumps(avg)
+    avg = sumVar/numTweets
+    weightedAvg = weightedSum/numTweets
+    weightedAvg /= totalFollowers
+    #print json.dumps(avg, weightedAvg)
+    print [avg, weightedAvg, numTweets]
 
 #if __name__ == '__main__':
 main()
