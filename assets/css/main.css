@@ -2109,6 +2109,8 @@
 	#header {
 		position: relative;
 		background-image: url("http://i.imgur.com/Ko5YwJ8.gif");
+		
+		
 		background-size: cover;
 		background-position: center center;
 		background-attachment: fixed;
@@ -2120,6 +2122,7 @@
 
 		#header:before {
 			content: '';
+
 			display: inline-block;
 			vertical-align: middle;
 			height: 100%;
@@ -2139,6 +2142,7 @@
 
 		#header header {
 			display: inline-block;
+
 		}
 
 			#header header > p {
@@ -2342,7 +2346,7 @@
 /* Banner */
 
 	#banner {
-		background: #fff;
+		background: #000;
 		text-align: center;
 		padding: 4.5em 0 4.5em 0;
 		margin-bottom: 0;
