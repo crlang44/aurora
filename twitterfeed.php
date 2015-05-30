@@ -1,5 +1,5 @@
 <?
-$search_query = $_POST['token'];
+$search_query = $_POST['ticker'];
 
 
 //set gauges to zero
@@ -22,15 +22,15 @@ $settings = array(
 );
 
 //Number of Requests to make
-$numberRequests = 5;
+$numberRequests = 1;
 
 //Number of Results per requests
-$numberResults = 100;
+$numberResults = 10;
 
 /** Note: Set the GET field BEFORE calling buildOauth(); **/
 $url = 'https://api.twitter.com/1.1/search/tweets.json';
 $extra_parameters = '&lang=en&include_entities=1&count='. $numberRequests;
-$getfield = "&q=".$search_query.$extra_parameters;
+$getfield = "?q=".$search_query.$extra_parameters;
 $requestMethod = 'GET';
 
 
