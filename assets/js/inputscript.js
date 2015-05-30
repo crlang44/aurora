@@ -47,7 +47,7 @@
 
 			}
 			
-			function initialize()
+			function initialize(rating)
 			{
 				createGauges();
 				setInterval(updateGauges(rating), 1000);
@@ -57,6 +57,7 @@
 
 function ajax(window)
             {
+            console.log("Got here");
             var ticker = page.document.getElementById("Input").value;  
             var xhr;  
              if (page.window.XMLHttpRequest) { // Mozilla, Safari, ...  
