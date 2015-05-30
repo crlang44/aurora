@@ -1,4 +1,4 @@
-<?
+<?php
 $search_query = $_POST['ticker'];
 
 
@@ -87,4 +87,4 @@ for($i=0; $i<=$numberRequests; $i++){
 	// print 'Number of Tweets analyzed: ' . $resultData[2] . '<br>';
 	//print $result;
  ?>
- <script type = 'text/javascript' > updateGuage(<? print $resultData[0] ?>); updateGuage(<? print $resultData[0] ?>); </script>
+ <script type = 'text/javascript' > updateGuage(<?php print $resultData[0] ?>); updateGuage(<?php print $resultData[0] ?>); </script>
