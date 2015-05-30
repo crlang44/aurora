@@ -34,7 +34,7 @@
 			{
 				for (var key in gauges)
 				{
-					var value = getValue(gauges[key],opi[key])
+					var value = getValue(gauges[key],opi)
 					gauges[key].redraw(value);
 				}
 			}
@@ -46,10 +46,10 @@
 				return gauge.config.min - overflow + (gauge.config.max - gauge.config.min + overflow*2) *  opinion;
 			}
 			
-			function initialize(op,opin)
+			function initialize()
 			{
 				createGauges();
-				setInterval(updateGauges(op,opin), 2000);
+				setInterval(updateGauges, 2000);
 			}
 
 
