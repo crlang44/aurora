@@ -13,7 +13,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
-	<body class="homepage" onload="initialize()">
+	<body class="homepage" onload="initialize(0)">
 		<div id="page-wrapper">
 
 			<!-- Header -->
@@ -56,12 +56,12 @@
 						<p>
 							Search for keywords to get Analytics:
 						</p>
-						<form onsubmit="return false;">
-						<input id="Input" type="text" name="Input">
+					<!--<form> -->
+						<input id="Input" type="text" name="Input" />
 						<footer>
-							<input type="submit" href="#" class="button">
+							<input type="button" onclick="ajax(window); return false;" class="button" />
 						</footer>
-						</form>
+					<!--</form> -->
 						
 
 					</header>

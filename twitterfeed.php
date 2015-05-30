@@ -1,5 +1,5 @@
 <?
-$search_query = $_POST['token'];
+$search_query = $_POST['ticker'];
 
 
 //set gauges to zero
@@ -86,5 +86,7 @@ for($i=0; $i<=$numberRequests; $i++){
 	// print 'Weighted Average: ' . $resultData[1] . '<br>';
 	// print 'Number of Tweets analyzed: ' . $resultData[2] . '<br>';
 	//print $result;
- ?>
- <script type = 'text/javascript' > updateGuage(<? print $resultData[0] ?>); updateGuage(<? print $resultData[0] ?>); </script>
+	echo "<script>updateGuage(".$resultData[0]."); updateGuage(".$resultData[0].");</script>"
+ 
+//<script type = 'text/javascript' > updateGuage(<? print $resultData[0] ?>); updateGuage(<? print $resultData[0] ?>); </script>
+?>

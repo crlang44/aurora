@@ -55,7 +55,7 @@
 			}
 
 
-function ajax(window)
+function ajax(page)
             {
             console.log("Got here");
             var ticker = page.document.getElementById("Input").value;  
@@ -73,8 +73,11 @@ function ajax(window)
             function display_data() {  
             if (xhr.readyState == 4) {  
              if (xhr.status == 200) {  
-              //alert(xhr.responseText);        
+              //alert(xhr.responseText);
+               console.log("PHP request success!");        
+               console.log(xhr.responseText);
                page.document.getElementById("updatedgauge").innerHTML = xhr.responseText;  // <script type='text/javascript'> updateGauge($var1); updateGauge($var2); </script>
+               
              } else {  
                alert('There was a problem with the request.');  
              }  
