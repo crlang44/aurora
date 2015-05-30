@@ -29,8 +29,7 @@ $json_output = json_decode($json_string, true);
 
 
 foreach($json_output[statuses] as $tweets){
-	//$matcher = "Ø|¯|§|¦|Ù|…|±|„|‡|¨|†|Š";
-	//$matcher = '/[\x80-\xFF]/';
+	
 	$text = $tweets[text];
 	if(!preg_match('/[^\x20-\x7F]/', text))
 	print $text;
@@ -42,34 +41,4 @@ foreach($json_output[statuses] as $tweets){
 // print_r($json_output);
 // print "</pre>";
 
-
-// foreach ( $statuses as $n )
-// {
-
-// 		print "<pre>";
-// 		print_r($n);
-// 		print "</pre";
-
-// 	//object to array conversion
-// 	// $t = array($n);
-
-
-// 	// //loop through each tweet
-// 	// foreach($t as $tweet){
-// 	// 	print "<pre>";
-// 	// 	echo $t->name;
-// 	// 	print "</pre";
-// 	//     //echo "{$t->name}\n";
-// 	// }
-	
-// }
-
-function get_string_between($string, $start, $end){
-    $string = " ".$string;
-    $ini = strpos($string,$start);
-    if ($ini == 0) return "";
-    $ini += strlen($start);
-    $len = strpos($string,$end,$ini) - $ini;
-    return substr($string,$ini,$len);
-}
  ?>
