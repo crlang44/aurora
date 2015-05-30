@@ -1,5 +1,5 @@
 <?php
-$search_query = 'cmcst';//$_POST['ticker'];
+$search_query = $_POST['Input'];
 
 
 //set gauges to zero
