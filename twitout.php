@@ -169,7 +169,7 @@ for($i=0; $i<=$numberRequests; $i++){
 
 		<span id="wavgGaugeContainer"></span>
 	</br>
-		<img  src="http://chart.finance.yahoo.com/z?s=GOOG" alt="" />
+		<img  src=<?php print "'http://chart.finance.yahoo.com/z?s=".$_POST['Input'] . "'"?> alt="" />
 		<span id="updatedgauge"></span>
 
 
