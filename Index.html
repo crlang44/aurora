@@ -13,11 +13,20 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
-	<body class="homepage">
+	<body class="homepage" onload="initialize()">
 		<div id="page-wrapper">
 
 			<!-- Header -->
 				<div id="header">
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								
+								
+							</ul>
+						</nav>		
 
 					<!-- Inner -->
 						<div class="inner">
@@ -28,21 +37,14 @@
 								
 								<h1><a href="index.html" id="logo">Aurora</a></h1>
 								<hr />
-								<p>Twitter Stock Metrics</p>
+								<p> &nbsp; &nbsp;Stock Market Metrics from Twitter &nbsp; &nbsp;</p>
 							</header>
 							<footer>
 								<a href="#banner" class="button circled scrolly">Start</a>
 							</footer>
-						</div>
+							<br />
 
-					<!-- Nav -->
-						<nav id="nav">
-							<ul>
-								<li><a href="index.html">Home</a></li>
-								
-								
-							</ul>
-						</nav>
+						</div>
 
 				</div>
 
@@ -56,9 +58,75 @@
 						<form>
 						<input type="text" name="Input">
 						</form>
+						<footer>
+							<a href="#" class="button">Submit</a>
+						</footer>
 
 					</header>
 				</section>
+
+				<section id ="banner">
+
+<!-- Create Gauge Script -->
+		<script>
+						
+				
+			var gauges = [];
+			
+			function createGauge(name, label, min, max)
+			{
+				var config = 
+				{
+					size: 200,
+					label: label,
+					min: undefined != min ? min : 0,
+					max: undefined != max ? max : 100,
+					minorTicks: 10
+				}
+				
+				var range = config.max - config.min;
+				config.yellowZones = [{ from: config.min + range*0.25, to: config.min + range*0.75 }];
+				config.redZones = [{ from: config.min , to: config.min + range*0.25 }];
+				config.greenZones = [{ from: config.min + range*0.75, to: config.max }];
+				
+				gauges[name] = new Gauge(name + "GaugeContainer", config);
+				gauges[name].render();
+			}
+			
+			function createGauges()
+			{
+				createGauge("avg", "Average");
+				createGauge("wavg", "W Average");
+
+			}
+			
+			function updateGauges()
+			{
+				for (var key in gauges)
+				{
+					var value = getValue(gauges[key])
+					gauges[key].redraw(value);
+				}
+			}
+			
+			function getValue(gauge)
+			{
+				var overflow = 0; //10;
+				return gauge.config.min - overflow + (gauge.config.max - gauge.config.min + overflow*2) *  0.13;
+			}
+			
+			function initialize()
+			{
+				createGauges();
+				setInterval(updateGauges, 5000);
+			}
+			
+		</script>
+
+		<span id="avgGaugeContainer"></span>
+		<span id="wavgGaugeContainer"></span>
+
+				</section>	
 
 			<!-- Carousel -->
 				<section class="carousel">
@@ -170,7 +238,7 @@
 								<!-- Copyright -->
 									<div class="copyright">
 										<ul class="menu">
-											<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+											<li>&copy; Aurora Metrics. All rights reserved. 2015</li>
 										</ul>
 									</div>
 
@@ -183,6 +251,8 @@
 		</div>
 
 		<!-- Scripts -->
+			<script src="http://mbostock.github.com/d3/d3.js"></script>
+		    <script src="assets/js/gauge.js"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -191,6 +261,11 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+			<script src="https://cdnjs.com/libraries/chart.js"></script>
+
+
+
+
 
 	</body>
 </html>
