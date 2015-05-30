@@ -13,7 +13,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
-	<body class="homepage" onload="initialize()">
+	<body class="homepage" onload="initialize(0)">
 		<div id="page-wrapper">
 
 			<!-- Header -->
@@ -55,81 +55,30 @@
 						<p>
 							Search for keywords to get twitter Analytics:
 						</p>
-						<form>
-						<input type="text" name="Input">
-						</form>
+						<form onsubmit="ajax(window)">
+						<input id="Input" type="text" name="Input">
 						<footer>
-							<a href="#" class="button">Submit</a>
+							<input type="submit" href="#" class="button">
 						</footer>
+						</form>
+						
 
 					</header>
 				</section>
 
 				<section id ="banner">
 
-<!-- Create Gauge Script -->
-		<script>
-						
-				
-			var gauges = [];
-			
-			function createGauge(name, label, min, max)
-			{
-				var config = 
-				{
-					size: 200,
-					label: label,
-					min: undefined != min ? min : 0,
-					max: undefined != max ? max : 100,
-					minorTicks: 10
-				}
-				
-				var range = config.max - config.min;
-				config.yellowZones = [{ from: config.min + range*0.25, to: config.min + range*0.75 }];
-				config.redZones = [{ from: config.min , to: config.min + range*0.25 }];
-				config.greenZones = [{ from: config.min + range*0.75, to: config.max }];
-				
-				gauges[name] = new Gauge(name + "GaugeContainer", config);
-				gauges[name].render();
-			}
-			
-			function createGauges()
-			{
-				createGauge("avg", "Average");
-				createGauge("wavg", "W Average");
 
-			}
-			
-			function updateGauges()
-			{
-				for (var key in gauges)
-				{
-					var value = getValue(gauges[key])
-					gauges[key].redraw(value);
-				}
-			}
-			
-			function getValue(gauge)
-			{
-				var overflow = 0; //10;
-				return gauge.config.min - overflow + (gauge.config.max - gauge.config.min + overflow*2) *  0.13;
-			}
-			
-			function initialize()
-			{
-				createGauges();
-				setInterval(updateGauges, 5000);
-			}
-			
-		</script>
 
 		<span id="avgGaugeContainer"></span>
 		<span id="wavgGaugeContainer"></span>
+		<span id="updatedgauge"></span>
 
 				</section>	
 
 			<!-- Carousel -->
-				<section class="carousel">
+				<section id="Toptrends" class="carousel">
+					<h2> &nbsp; &nbsp; Latest <strong>Trends:</strong>.</h2>
 					<div class="reel">
 
 						<article>
@@ -262,6 +211,7 @@
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
 			<script src="https://cdnjs.com/libraries/chart.js"></script>
+			<script src="assets/js/inputscript.js"></script>
 
 
 
