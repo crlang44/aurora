@@ -1,7 +1,5 @@
-<<<<<<< HEAD
-# Aurora
-=======
 # aurora
+<<<<<<< HEAD
 
 This branch will be used to maintain the unstable versions of the project. This will eventually be merged with the master branch.
 
@@ -9,3 +7,5 @@ This branch will be used to maintain the unstable versions of the project. This 
 >>>>>>> development
 =======
 >>>>>>> development
+=======
+>>>>>>> origin/master
