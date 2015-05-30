@@ -1,6 +1,7 @@
 <!-- Create Gauge Script -->					
 				
 			var gauges = [];
+			var opins = [];
 			
 			function createGauge(name, label, min, max)
 			{
@@ -29,29 +30,26 @@
 
 			}
 			
-			function updateGauges(rating)
+			function updateGauges(opi,opin)
 			{
 				for (var key in gauges)
 				{
-					var value = getValue(gauges[key], rating);
+					var value = getValue(gauges[key],opi[key])
 					gauges[key].redraw(value);
 				}
-
 			}
 			
-			function getValue(gauge, rating)
+			function getValue(gauge,opinion)
 			{
 				//opinion = 0.76;
 				var overflow = 0; //10;
-				return gauge.config.min - overflow + (gauge.config.max - gauge.config.min + overflow*2) *  rating;
-
+				return gauge.config.min - overflow + (gauge.config.max - gauge.config.min + overflow*2) *  opinion;
 			}
 			
-			function initialize()
+			function initialize(op,opin)
 			{
 				createGauges();
-				setInterval(updateGauges(rating), 1000);
-
+				setInterval(updateGauges(op,opin), 2000);
 			}
 
 
