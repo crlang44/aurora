@@ -86,5 +86,9 @@ for($i=0; $i<=$numberRequests; $i++){
 	// print 'Weighted Average: ' . $resultData[1] . '<br>';
 	// print 'Number of Tweets analyzed: ' . $resultData[2] . '<br>';
 	//print $result;
- ?>
- <script type = 'text/javascript' > updateGuage(<?php print $resultData[0] ?>); updateGuage(<?php print $resultData[0] ?>); </script>
+
+	//echo "<script>updateGuage(".$resultData[0]."); updateGuage(".$resultData[0].");</script>"
+
+?> 
+<script type = 'text/javascript' > updateGuage(<?php print $resultData[0] ?>); updateGuage(<?php print $resultData[0] ?>); </script>
+

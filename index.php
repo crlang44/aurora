@@ -56,13 +56,8 @@
 						<p>
 							Search for keywords to get Analytics:
 						</p>
-<<<<<<< HEAD
-						<form action="twitout.php" method="POST">
-						<input id="Input" type="text" name="Input">
-=======
 					<!--<form> -->
 						<input id="Input" type="text" name="Input" />
->>>>>>> 0f9ee4eb371b5cd860280dea9e3a21dcc6513461
 						<footer>
 							<input type="button" onclick="ajax(window); return false;" class="button" />
 						</footer>

@@ -30,31 +30,43 @@
 
 			}
 			
-			function updateGauges(opi,opin)
+			function updateGauges(rating)
 			{
 				for (var key in gauges)
 				{
+<<<<<<< HEAD
 					var value = getValue(gauges[key],opi)
+=======
+					var value = getValue(gauges[key], rating);
+>>>>>>> 0f9ee4eb371b5cd860280dea9e3a21dcc6513461
 					gauges[key].redraw(value);
 				}
 			}
 			
-			function getValue(gauge,opinion)
+			function getValue(gauge,rating)
 			{
 				//opinion = 0.76;
 				var overflow = 0; //10;
-				return gauge.config.min - overflow + (gauge.config.max - gauge.config.min + overflow*2) *  opinion;
+				return gauge.config.min - overflow + (gauge.config.max - gauge.config.min + overflow*2) *  rating;
 			}
 			
+<<<<<<< HEAD
 			function initialize()
 			{
 				createGauges();
 				setInterval(updateGauges, 2000);
+=======
+			function initialize(rating)
+			{
+				createGauges();
+				setInterval(updateGauges(rating), 2000);
+>>>>>>> 0f9ee4eb371b5cd860280dea9e3a21dcc6513461
 			}
 
 
-function ajax(window)
+function ajax(page)
             {
+            console.log("Got here");
             var ticker = page.document.getElementById("Input").value;  
             var xhr;  
              if (page.window.XMLHttpRequest) { // Mozilla, Safari, ...  
@@ -70,8 +82,11 @@ function ajax(window)
             function display_data() {  
             if (xhr.readyState == 4) {  
              if (xhr.status == 200) {  
-              //alert(xhr.responseText);        
+              //alert(xhr.responseText);
+               console.log("PHP request success!");        
+               console.log(xhr.responseText);
                page.document.getElementById("updatedgauge").innerHTML = xhr.responseText;  // <script type='text/javascript'> updateGauge($var1); updateGauge($var2); </script>
+               
              } else {  
                alert('There was a problem with the request.');  
              }  
