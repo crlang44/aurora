@@ -4,7 +4,8 @@ $search_query = htmlspecialchars($_POST['Input']);
 //set gauges to zero
  $g1=0; // gauge 1
  $g2=0; // gauge 2
-
+$error_check = false; //check for errors returned by twitter
+$error_returned; //Error returned by twitter will be stored in here on receipt
 $outputString;
 
 require_once('TwitterAPIExchange.php');
@@ -39,11 +40,13 @@ for($i=0; $i<=$numberRequests; $i++){
 		$url = 'https://api.twitter.com/1.1/search/tweets.json';
 		$getfield = $next_results."&q=".$search_query.$extra_parameters;
 	}
-
+try{
 	$json_string = $twitter->setGetfield($getfield)
 	             ->buildOauth($url, $requestMethod)
 	             ->performRequest();
-
+} catch(Exception $e){
+	print "Exception Caught: ".$e;
+}
 	//convert json string to array
 	$json_output = json_decode($json_string, true);
 
@@ -56,10 +59,10 @@ for($i=0; $i<=$numberRequests; $i++){
 	// print "</pre>";
 
 	if(array_key_exists("errors", $json_output)){ //Catches any errors thrown by twitter
-		print $json_output[errors][0][message];
-		
+		$error_returned = $json_output[errors][0][message];
+		$error_check = true;
 		break;
-	}else{
+	}else{	//Processes text if no errors are returned
 	$next_results = $json_output[search_metadata][next_results];
 	
 	foreach($json_output[statuses] as $tweets){
@@ -80,13 +83,10 @@ for($i=0; $i<=$numberRequests; $i++){
 
 	}
 
-	$result = exec('python example.py ' . escapeshellarg($outputString)); //. escapeshellarg(json_encode($data))
+	//executes python script that analyzes disposition of text
+	$result = exec('python example.py ' . escapeshellarg($outputString)); 
 	$resultData = json_decode($result, true);
-	//print_r ($result);
-	// print 'Average: ' . $resultData[0] . '<br>';
-	// print 'Weighted Average: ' . $resultData[1] . '<br>';
-	// print 'Number of Tweets analyzed: ' . $resultData[2] . '<br>';
-	//print $result;
+	
  ?>
  <html>
 	<head>
@@ -103,6 +103,13 @@ for($i=0; $i<=$numberRequests; $i++){
 		
 				<section id ="banner">
 
+					<?
+					//outputs any errors from twitter
+					if($error_check){
+						print "<h2>Oops!</h2><br/>An Error Occurred.<br/>";
+						print '"'.$error_returned.'"';
+					}
+					?>
 
 <!-- ******************This is where the guages are ********************-->
 
