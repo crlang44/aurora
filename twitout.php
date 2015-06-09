@@ -12,14 +12,14 @@ require_once('TwitterAPIExchange.php');
 
 /** Set access tokens here - see: https://dev.twitter.com/apps/ **/
 $settings = array(
-    'oauth_access_token' => "2957667594-hQGoKBOvpZGENuDOG5uQgkfNgG31dllyEwPgBm9",
-    'oauth_access_token_secret' => "suO6Z26EdIoIL2bIYAhUlTUIv4QEXmjjaSiHaAXjPBqru",
-    'consumer_key' => "ZKlezrsp72y7Ck51yJylkVEGj",
-    'consumer_secret' => "Ux9XfcIXhs1CAQaE5c1AGQ4GMzrV0WxSM4cNSmJ9mN58MqGw5f"
+    'oauth_access_token' => "51234764-J2nNPym0Dspt0esm6xDuVt722MPAn2sHCW6wsX0LW",
+    'oauth_access_token_secret' => "J6RCz78Jj8v2b59XN7ViUyU5amtbftrRVzKcHjK6t51RI",
+    'consumer_key' => "byhraYuq3s1ZDravJVyO18YRx",
+    'consumer_secret' => "0Ulbk6sE2Jbh3FYhAycmLbOKjed37t8Pz5yrAJ0sKdj3l1tIjH"
 );
 
 //Number of Requests to make
-$numberRequests = 5;
+$numberRequests = 10;
 
 //Number of Results per requests
 $numberResults = 100;
